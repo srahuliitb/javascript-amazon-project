@@ -656,5 +656,37 @@ const products = [
       "apparel",
       "mens"
     ]
+  },
+  {
+    id: "bc2847e6-5323-403f-b7cf-57fde044a956",
+    image: "images/products/backpack.jpg",
+    name: "Black coloured Backpack for a 15.6 inches laptop",
+    rating: {
+      stars: 4.5,
+      count: 6758
+    },
+    priceCents: 2389,
+    keywords: [
+      "backpack",
+      "bag",
+      "school bag",
+      "laptop bag"
+    ]
+  },
+  {
+    id: "bc2847e6-5354-403g-d7cg-57hde144a827",
+    image: "images/products/umbrella.jpg",
+    name: "Polyester Umbrella - Teal",
+    rating: {
+      stars: 3.5,
+      count: 234
+    },
+    priceCents: 649,
+    keywords: [
+      "backpack",
+      "bag",
+      "school bag",
+      "laptop bag"
+    ]
   }
 ];
