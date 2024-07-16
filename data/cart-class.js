@@ -2,16 +2,16 @@ import { validDeliveryOption } from "./deliveryOptions.js";
 
 class Cart {
 
-  cartItems;
-  localStorageKey;
+  cartItems; // This is a public property which means it can be accessed from outside the class
+  #localStorageKey; // The # symbol makes the property private which means it can be accessed only inside the class
 
   constructor(localStorageKey) {
-    this.localStorageKey = localStorageKey;
-    this.loadCartFromStorage();
+    this.#localStorageKey = localStorageKey;
+    this.#loadCartFromStorage();
   }
   
-  loadCartFromStorage() {
-    this.cartItems = JSON.parse(localStorage.getItem(this.localStorageKey));
+  #loadCartFromStorage() { // The # symbol makes the method private which means it can be accessed only inside the class
+    this.cartItems = JSON.parse(localStorage.getItem(this.#localStorageKey));
   
     if (!this.cartItems) {
       this.cartItems = [{
@@ -27,7 +27,7 @@ class Cart {
   }
 
   saveToStorage() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItems));
+    localStorage.setItem(this.#localStorageKey, JSON.stringify(this.cartItems));
   }
 
   addToCart(productId, quantity) {
@@ -111,4 +111,6 @@ console.log('Normal cart:');
 console.log(cart);
 console.log('Business cart:');
 console.log(businessCart);
+
+console.log(businessCart instanceof Cart);
 
