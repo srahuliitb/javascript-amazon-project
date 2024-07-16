@@ -5,7 +5,7 @@ import isSatSun from "./exercises/15f.js"; // We can rename a default export weh
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
 
 // import '../data/cart-oop.js';
-import '../data/cart-class.js';
+// import '../data/cart-class.js';
 
 renderCheckoutHeader();
 renderOrderSummary();
