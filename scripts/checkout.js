@@ -3,7 +3,7 @@ import { renderPaymentSummary } from "./checkout/paymentSummary.js";
 import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js'; // This is default export
 import isSatSun from "./exercises/15f.js"; // We can rename a default export wehen we import.
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
-import { loadProductsFromBackend } from "../data/products.js";
+import { loadProductsFromBackend, loadProductsFromBackendFetch } from "../data/products.js";
 
 import { loadCartFromBackend } from "../data/cart.js";
 
@@ -13,11 +13,12 @@ import { loadCartFromBackend } from "../data/cart.js";
 // import '../data/backend-practice.js'
 
 Promise.all([
-  new Promise((resolve) => {
-    loadProductsFromBackend(() => {
-      resolve('value1');
-    });
-  }),
+  // new Promise((resolve) => {
+  //   loadProductsFromBackend(() => {
+  //     resolve('value1');
+  //   });
+  // }),
+  loadProductsFromBackendFetch(),
   new Promise((resolve) => {
     loadCartFromBackend(() => {
       resolve();

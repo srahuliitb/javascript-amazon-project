@@ -79,6 +79,30 @@ class Appliance extends Product {
 
 export let products;
 
+export function loadProductsFromBackendFetch() {
+  const promise = fetch('https://supersimplebackend.dev/products').then((response) => {
+    return response.json(); // response.json() is an asynchronous function, so need to attach 'then()' to it.
+  }).then((productsData) => {
+    products = productsData.map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      } else if (productDetails.type === 'appliance') {
+        return new Appliance(productDetails);
+      } 
+      return new Product(productDetails);
+    });
+    console.log('load products');
+  });
+
+  return promise;
+}
+
+/*
+loadProductsFromBackendFetch().then(() => {// 'then()' attaches next step to the promise returned by the loadProductsFromBackendFetch function.
+  console.log('next steps');
+});
+*/
+
 export function loadProductsFromBackend(renderFun) {
   const xhr = new XMLHttpRequest();
 
