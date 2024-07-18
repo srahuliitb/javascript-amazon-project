@@ -91,7 +91,7 @@ export function loadProductsFromBackend(renderFun) {
       } 
       return new Product(productDetails);
     });
-    // console.log(products);
+    console.log('load products');
     renderFun(); // It is a callback function which means it is a function to be executed in the future
   });
 
