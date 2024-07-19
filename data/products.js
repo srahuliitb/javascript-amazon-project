@@ -92,8 +92,10 @@ export function loadProductsFromBackendFetch() {
       return new Product(productDetails);
     });
     console.log('load products');
+  })/*.catch(() => { // with a promise, we can use the catch function to handle errors.
+    console.log('Unexpected error. Please try again later');
   });
-
+  */
   return promise;
 }
 
@@ -118,6 +120,11 @@ export function loadProductsFromBackend(renderFun) {
     console.log('load products');
     renderFun(); // It is a callback function which means it is a function to be executed in the future
   });
+
+  // Create a separate callback to handle an error.
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected error. Please try again later');
+  })
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   xhr.send();

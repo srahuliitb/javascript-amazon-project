@@ -12,6 +12,32 @@ import { loadCartFromBackend } from "../data/cart.js";
 // import '../data/car.js';
 // import '../data/backend-practice.js'
 
+// 'aysnc' makes a function return a promise. It also lets us use 'await'
+// 'async' can only be used with promises
+async function loadPage() {
+  try {
+    // 'await' lets us wait for a promise to finish before going to the next line
+    // 'await' lets us write asynchronous code like a normal code
+    // 'await' only works inside an async function & the following function must be a promise
+    await loadProductsFromBackendFetch(); 
+    await new Promise((resolve) => { // loadCartFromBackend is not a promise, so we had to create a promise to use 'await'
+      loadCartFromBackend(() => {
+        resolve();
+      });
+    });
+
+  } catch (error) {
+    console.log('Unexpected error. Please try again later');
+  }
+  
+  renderCheckoutHeader();
+  renderOrderSummary();
+  renderPaymentSummary();
+}
+
+loadPage();
+
+/*
 Promise.all([
   // new Promise((resolve) => {
   //   loadProductsFromBackend(() => {
@@ -31,6 +57,7 @@ Promise.all([
   renderOrderSummary();
   renderPaymentSummary();
 });
+*/
 
 /*
 new Promise((resolve) => { // Promises keeps our code flat and avoid too much nesting.
